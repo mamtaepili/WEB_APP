@@ -35,7 +35,7 @@ phases:
   post_build:
     commands:
       - cd ./k8s
-      - aws eks --region $AWS_REGION update-kubeconfig --name k8s-aws-cluster
+      - aws eks --region $AWS_REGION update-kubeconfig --name $CLUSTER_NAME
       - kubectl get ns webapp || kubectl create namespace webapp
       - kubectl apply -f k8s-aws.yaml
       - kubectl get pods -nwebapp
